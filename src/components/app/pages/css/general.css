@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,800&display=swap");
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.btn {
+  font-size: 20px;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  background: #02001c;
+  background: -webkit-gradient(linear, left top, right top, from(#02001c), color-stop(0%, #35beda), to(#26daff));
+  background: linear-gradient(90deg, #02001c 0%, #35beda 0%, #26daff 100%);
+}
+
+.bold-text {
+  font-weight: 600;
+}
+/*# sourceMappingURL=general.css.map */

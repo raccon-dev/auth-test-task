@@ -1,10 +1,34 @@
 import React from 'react';
+import AuthPage from './pages/auth'
+import Dashboard from './pages/dashboard'
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 
 function App() {
   return (
-    <div className="App">
+    <Router>
+      <div className="App">
+        <Switch>
 
-    </div>
+          <Route path="/" exact>
+            <AuthPage />
+          </Route>
+
+          <Route path="/dashboard" exact>
+            <Dashboard />
+          </Route>
+
+        </Switch>
+
+      </div>
+    </Router>
+
   );
 }
 
