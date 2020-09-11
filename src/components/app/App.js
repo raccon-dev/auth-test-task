@@ -20,7 +20,7 @@ function App() {
             <AuthPage />
           </Route>
 
-          <Route path="/dashboard" exact>
+          <Route path="/dashboard" >
             <Dashboard />
           </Route>
 

@@ -4,24 +4,18 @@ const closeEyes = document.querySelectorAll('.icon-close-eye');
 
 
 
-    showPasswordBtn.addEventListener('click', e => {
-        for (let passwordInput of passwordsInput) {
-            if (passwordInput.type === "password") {
-                passwordInput.type = "text";
+showPasswordBtn.addEventListener('click', e => {
 
-                for (let closeEye of closeEyes) {
-                    closeEye.src = "img/eye-open.svg"
-                }
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
 
-            } else {
-                passwordInput.type = "password";
-                for (let closeEye of closeEyes) {
-                    closeEye.src = "img/close-eye.svg"
-                }
 
-            }
-        }
+    } else {
+        passwordInput.type = "password";
 
-    });
+    }
+
+
+});
 
 

@@ -37,7 +37,20 @@ const AuthPage = () => {
             return false
         }
     }
+    const handlePasswordShow = e => {
+        console.log('show')
+        e.preventDefault();
+        const passwordsInput = document.querySelector('.password-input');
+        const closeEyes = document.querySelector('.icon-close-eye');
+        if (passwordsInput.type === "password") {
+            passwordsInput.type = "text";
+            closeEyes.src = "./assets/img/eye-open.svg"
 
+        } else {
+            passwordsInput.type = "password";
+            closeEyes.src = "./assets/img/close-eye.svg"
+        }
+    }
 
     return (
         <div id="auth-section">
@@ -45,7 +58,7 @@ const AuthPage = () => {
 
             <div className="auth-body">
                 <h3 className="section-title">Log In</h3>
-                <form onSubmit={ e => history.push("/dashboard")} className="auth-htmlForm">
+                <form className="auth-htmlForm">
                     <div className="section-email">
                         <label className="auth-label" htmlFor="auth-email-input">Email</label>
                         <input onChange={e => setEmail(e.target.value)} className="auth-input" id="auth-email-input" type="email" placeholder="Enter your email" />
@@ -58,8 +71,8 @@ const AuthPage = () => {
                     Password?</a></label>
                         </div>
                         <div className="input-wrapper">
-                            <input onChange={e => setPassword(e.target.value)} className="auth-input" id="auth-password-input" type="password" placeholder="Enter password" />
-                            <button className="show-password"><img className="icon-close-eye" src="./assets/img/close-eye.svg" alt="close-eye" /></button>
+                            <input onChange={e => setPassword(e.target.value)} className="auth-input password-input" type="password" placeholder="Enter password" />
+                            <button onClick={e => handlePasswordShow(e)} className="show-password"><img className="icon-close-eye" src="./assets/img/close-eye.svg" alt="close-eye" /></button>
                         </div>
                     </div>
 
@@ -67,7 +80,7 @@ const AuthPage = () => {
                         {nameError && <p>{nameError}</p>}
                     </div>
 
-                    <button  type='submit' disabled={disabled} className="btn" id="btn-logIn">Log In</button>
+                    <button onClick={e => history.push("/dashboard")} type='submit' disabled={disabled} className="btn" id="btn-logIn">Log In</button>
 
                 </form>
 
