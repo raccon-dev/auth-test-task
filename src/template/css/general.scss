@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,800&display=swap");
+body {
+    font-family: "Open Sans", sans-serif;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.btn {
+    font-size: 20px;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    background: rgb(2, 0, 28);
+    background: linear-gradient(90deg, rgba(2, 0, 28, 1) 0%, rgba(53, 190, 218, 1) 0%, rgba(38, 218, 255, 1) 100%);
+}
+.bold-text{
+    font-weight: 600;
+}
