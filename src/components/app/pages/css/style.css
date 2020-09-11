@@ -128,6 +128,7 @@
 }
 
 .icon-close-eye {
+  pointer-events: none;
   width: 25px;
 }
 

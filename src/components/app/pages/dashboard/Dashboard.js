@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-
+import { useHistory } from "react-router-dom";
 const Dashboard = () => {
 
-
+    const history = useHistory();
     const [currentPassword, setCurrentPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confimPassword, setconfimPassword] = useState('');
@@ -37,14 +37,50 @@ const Dashboard = () => {
             return false
         }
     }
+    const handlePasswordShow = e => {
+        e.preventDefault();
+        let passwordInput = '';
+        let currentEye = '';
+        switch (e.target.dataset.current) {
 
+            case 'currentPassword':
+                passwordInput = document.querySelector('.current-password');
+                currentEye = document.querySelector('.cur-pass-eye');
+                break;
+
+            case 'newPassword':
+                passwordInput = document.querySelector('.new-password');
+                currentEye = document.querySelector('.new-pass-eye');
+                break;
+
+            case 'confimNewPassword':
+                passwordInput = document.querySelector('.confim-pass');
+                currentEye = document.querySelector('.confim-pass-eye');
+                
+                break;
+
+            default:
+                break;
+        }
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            currentEye.src = "./assets/img/eye-open.svg"
+
+    
+        } else {
+            passwordInput.type = "password";
+            currentEye.src = "./assets/img/close-eye.svg"
+    
+        }
+
+    }
 
     return (
         <div>
             <header className="header">
                 <div className="container">
                     <div className="header-wrapper">
-                        <a href="#" className="logo"><img src="./assets/img/logo_white.svg" alt="" /></a>
+                        <a onClick={e => history.push("/")} href="#" className="logo"><img src="./assets/img/logo_white.svg" alt="" /></a>
                         <a className="current-page" href="#"><img className="dashboard-icon" src="./assets/img/dashboard.svg"
                             alt="dashboard-icon" /> Dashboard</a>
                     </div>
@@ -114,23 +150,23 @@ const Dashboard = () => {
                                     <label className="auth-label" htmlFor="auth-password-input">Password</label>
                                     <div className="passwords-wrapper">
                                         <div className="input-wrapper">
-                                            <input onChange={e => setCurrentPassword(e.target.value)} className="auth-input auth-password-input" type="password"
+                                            <input onChange={e => setCurrentPassword(e.target.value)} className="current-password auth-input auth-password-input" type="password"
                                                 placeholder="Current password" />
-                                            <button className="show-password"><img className="icon-close-eye" src="./assets/img/close-eye.svg"
+                                            <button data-current='currentPassword' onClick={e => handlePasswordShow(e)} className="show-password"><img className="cur-pass-eye icon-close-eye" src="./assets/img/close-eye.svg"
                                                 alt="close-eye" /></button>
                                         </div>
 
                                         <div className="input-wrapper">
-                                            <input onChange={e => setNewPassword(e.target.value)} className="auth-input auth-password-input" type="password"
+                                            <input onChange={e => setNewPassword(e.target.value)} className="new-password auth-input auth-password-input" type="password"
                                                 placeholder="Set new password" />
-                                            <button className="show-password"><img className="icon-close-eye" src="./assets/img/close-eye.svg"
+                                            <button data-current='newPassword' onClick={e => handlePasswordShow(e)} className="show-password"><img className="new-pass-eye icon-close-eye" src="./assets/img/close-eye.svg"
                                                 alt="close-eye" /></button>
                                         </div>
 
                                         <div className="input-wrapper">
-                                            <input onChange={e => setconfimPassword(e.target.value)} className="auth-input auth-password-input" type="password"
+                                            <input onChange={e => setconfimPassword(e.target.value)} className="confim-pass auth-input auth-password-input" type="password"
                                                 placeholder="Confim new password" />
-                                            <button className="show-password"><img className="icon-close-eye" src="./assets/img/close-eye.svg"
+                                            <button data-current='confimNewPassword' onClick={e => handlePasswordShow(e)} className="show-password"><img className="confim-pass-eye icon-close-eye" src="./assets/img/close-eye.svg"
                                                 alt="close-eye" /></button>
                                         </div>
                                         <button disabled={disabled} className="btn" id="btn-save">Save</button>
